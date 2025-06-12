@@ -14,6 +14,13 @@
 - Infrastructure: Provisioned using Pulumi — supports AWS and Cloudflare
 - CLI: Custom CLI for common dev and ops tasks
 - Local Dev: Docker Compose-powered development environment
+- Observability: Sentry error reporting and source maps
+
+### Product
+
+- Authentication: Google OAuth and magic link sign-in included
+- Paddle: Integrated with Paddle subscriptions
+- Email: Transactional email support included with nodemailer
 
 ---
 

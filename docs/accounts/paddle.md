@@ -20,9 +20,7 @@ This will create a tunnel to your local server. Copy the URL and add it to the P
 
 2. Create a new destination and set the URL `http://your-ngrok-url/webhooks/paddle`.
 
-:::note
 The free version of ngrok will generate a new URL every time you restart the server. You'll need to update the webhook URL in the Paddle dashboard every time you restart ngrok.
-:::
 
 3. Select all the events and save the destination.
 
