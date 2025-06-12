@@ -1,0 +1,17 @@
+prod:
+  # The URL of the Supabase database
+  DATABASE_URL: todo
+  # The client ID and secret of the Google OAuth application
+  # https://support.google.com/cloud/answer/6158849?hl=en
+  GOOGLE_CLIENT_ID: todo
+  GOOGLE_CLIENT_SECRET: todo
+  # A random string used to sign the JWT tokens
+  # Can be generated using uuidgen
+  JWT_SECRET: todo
+  POSTMARK_API_TOKEN: todo
+  PADDLE_API_KEY: todo
+  PADDLE_WEBHOOK_SECRET: todo
+  # The DSN of the Sentry backend project
+  SENTRY_DSN: todo
+  # The URL of the frontend application e.g. https://app.domain.com
+  FRONTEND_URL: todo

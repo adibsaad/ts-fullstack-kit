@@ -1,0 +1,128 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type AuthSuccessResponse {
+  token: String!
+}
+
+type Error {
+  message: String!
+}
+
+enum InviteUserRole {
+  ADMIN
+  MEMBER
+}
+
+type Mutation {
+  add(a: Int!, b: Int!): Int
+  cancelSubscription: MutationCancelSubscriptionResult
+  completeGoogleAuth(code: String!): MutationCompleteGoogleAuthResult
+  completeMagicLink(token: String!): MutationCompleteMagicLinkResult
+  inviteUser(email: String!, role: InviteUserRole!): MutationInviteUserResult
+  magicLink(email: String!): MutationMagicLinkResult
+  resumeSubscription: MutationResumeSubscriptionResult
+  saveResources(resources: [ResourceInput!]!): [Resource!]
+}
+
+union MutationCancelSubscriptionResult =
+  | Error
+  | MutationCancelSubscriptionSuccess
+
+type MutationCancelSubscriptionSuccess {
+  data: Boolean!
+}
+
+union MutationCompleteGoogleAuthResult =
+  | Error
+  | MutationCompleteGoogleAuthSuccess
+
+type MutationCompleteGoogleAuthSuccess {
+  data: AuthSuccessResponse!
+}
+
+union MutationCompleteMagicLinkResult = Error | MutationCompleteMagicLinkSuccess
+
+type MutationCompleteMagicLinkSuccess {
+  data: AuthSuccessResponse!
+}
+
+union MutationInviteUserResult = Error | MutationInviteUserSuccess
+
+type MutationInviteUserSuccess {
+  data: Boolean!
+}
+
+union MutationMagicLinkResult = Error | MutationMagicLinkSuccess
+
+type MutationMagicLinkSuccess {
+  data: Boolean!
+}
+
+union MutationResumeSubscriptionResult =
+  | Error
+  | MutationResumeSubscriptionSuccess
+
+type MutationResumeSubscriptionSuccess {
+  data: Boolean!
+}
+
+type Query {
+  currentUser: User
+  hello: String
+  resources: [Resource!]
+}
+
+type Resource {
+  field: String!
+  id: ID!
+}
+
+input ResourceInput {
+  field: String!
+  id: String!
+  new: Boolean
+  remove: Boolean
+}
+
+enum SubscriptionName {
+  Hobby
+  Pro
+}
+
+enum SubscriptionStatus {
+  Active
+  Inactive
+}
+
+type Team {
+  id: ID
+  subscription: UserSubscription
+  users: [User!]
+}
+
+type User {
+  email: String
+  firstName: String
+  hasGoogleAuth: Boolean
+  id: ID
+  lastName: String
+  pictureUrl: String
+  role: UserRole!
+  team: Team!
+}
+
+enum UserRole {
+  ADMIN
+  MEMBER
+  OWNER
+}
+
+type UserSubscription {
+  expiresAt: String
+  id: ID
+  status: SubscriptionStatus!
+  subName: SubscriptionName!
+}

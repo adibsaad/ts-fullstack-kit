@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+CLI_PATH="$DIR/../dist/cli"
+
+if [ ! -f "$CLI_PATH" ]; then
+  echo "Error: dist/cli does not exist. Please run `npm run start:cli` first."
+  exit 1
+fi
+
+node "$CLI_PATH" "$@"

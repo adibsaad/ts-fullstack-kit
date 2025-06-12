@@ -1,0 +1,18 @@
+[build]
+  base = "src/frontend"
+  command = "pnpm build"
+  publish = "dist"
+
+[[plugins]]
+package = "netlify-plugin-ttl-cache"
+  [plugins.inputs]
+  path = "dist"
+  ttl = 90
+
+[[plugins]]
+package = "netlify-source-map-cleanup-plugin"
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 200

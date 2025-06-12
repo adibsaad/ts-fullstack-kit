@@ -1,0 +1,25 @@
+{
+  "name": "ts-fullstack-kit",
+  "main": "index.ts",
+  "devDependencies": {
+    "@types/node": "^18.19.111",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@pulumi/archive": "^0.2.2",
+    "@pulumi/aws": "^6.82.1",
+    "@pulumi/aws-apigateway": "^2.6.2",
+    "@pulumi/awsx": "^2.21.1",
+    "@pulumi/cloudflare": "^5.49.1",
+    "@pulumi/pulumi": "^3.175.0",
+    "@types/js-yaml": "^4.0.9",
+    "js-yaml": "^4.1.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@pulumi/docker",
+      "@pulumi/docker-build",
+      "protobufjs"
+    ]
+  }
+}

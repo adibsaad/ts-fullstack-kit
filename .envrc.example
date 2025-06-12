@@ -1,0 +1,23 @@
+# Local db credentials
+export DATABASE_URL="postgresql://user:password@localhost:5432/app_dev"
+
+# https://github.com/DarthSim/overmind
+# export OVERMIND_DAEMONIZE=1
+# export OVERMIND_AUTO_RESTART=web,worker,ext,frontend
+export OVERMIND_ANY_CAN_DIE=1
+
+# Backend
+export DOMAIN_NAME=mydomain.com
+export GOOGLE_CLIENT_ID=todo
+export GOOGLE_CLIENT_SECRET=todo
+export JWT_SECRET=secret
+## Paddle sandbox
+export PADDLE_ENVIRONMENT=sandbox
+export PADDLE_API_KEY=todo
+export PADDLE_WEBHOOK_SECRET=todo
+
+# Frontend/Vite
+export VITE_GOOGLE_CLIENT_ID=todo
+## Paddle sandbox
+export VITE_PADDLE_ENVIRONMENT=sandbox
+export VITE_PADDLE_AUTH_TOKEN=todo

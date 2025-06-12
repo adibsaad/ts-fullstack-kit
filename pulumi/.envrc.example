@@ -1,0 +1,7 @@
+# Cloud credentials
+export AWS_ACCESS_KEY_ID=<todo>
+export AWS_SECRET_ACCESS_KEY=<todo>
+export CLOUDFLARE_API_TOKEN=<todo>
+
+# e.g. example.com
+export DOMAIN_NAME=<todo>

@@ -1,0 +1,7 @@
+name: ts-fullstack-kit
+config:
+  aws:region: us-east-1
+runtime:
+  name: nodejs
+  options:
+    packagemanager: pnpm

@@ -1,0 +1,7 @@
+build_cli: pnpm start:watch-cli
+build_web: pnpm start:watch-server
+build_worker: pnpm start:watch-worker
+web: pnpm start:run-server
+worker: pnpm start:run-worker
+frontend: pnpm start:frontend
+codegen: pnpm codegen:watch

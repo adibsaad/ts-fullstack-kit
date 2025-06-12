@@ -1,0 +1,107 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Deploying to serverless requires rhel
+generator serverlessClient {
+  provider      = "prisma-client-js"
+  binaryTargets = ["rhel-openssl-1.0.x"]
+  output        = "../../../node_modules/.prisma/client"
+}
+
+generator pothos {
+  provider = "prisma-pothos-types"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  firstName  String?
+  lastName   String?
+  pictureUrl String?
+  googleSub  String?  @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  invitedAt       DateTime?
+  invitedByUserId Int?
+
+  userPaddleInfo     UserPaddleInfo?
+  userTeamMembership UserTeamMembership?
+  invitedBy          User?               @relation("InvitedBy", fields: [invitedByUserId], references: [id])
+  invitedUsers       User[]              @relation("InvitedBy")
+}
+
+model Team {
+  id Int @id @default(autoincrement())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  subscription       Subscription[]
+  userTeamMembership UserTeamMembership[]
+}
+
+// Only supports one team per user for now
+model UserTeamMembership {
+  userId Int @id
+  teamId Int
+
+  role String
+
+  user User @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  team Team @relation(fields: [teamId], references: [id])
+
+  @@unique([userId, teamId])
+}
+
+model UserPaddleInfo {
+  userId     Int      @id
+  customerId String
+  email      String
+  createdAt  DateTime @default(now())
+  user       User     @relation(fields: [userId], references: [id])
+}
+
+model PaddleWebhookEvent {
+  eventId   String   @id
+  eventType String
+  payload   Json
+  createdAt DateTime @default(now())
+}
+
+model Subscription {
+  id                   Int       @id @default(autoincrement())
+  teamId               Int
+  paddleSubscriptionId String
+  paddlePriceId        String
+  status               String
+  isCurrent            Boolean   @default(false)
+  expiresAt            DateTime?
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+
+  team Team @relation(fields: [teamId], references: [id])
+
+  @@unique([teamId, isCurrent])
+}
+
+model MagicLink {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  email     String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
