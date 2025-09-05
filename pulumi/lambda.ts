@@ -84,7 +84,7 @@ export const apiLambda = new aws.lambda.Function(
     // Since the function is bundled through webpack, we have to call index.index
     // to get the entrypoint module
     handler: 'index.index.webHandler',
-    runtime: aws.lambda.Runtime.NodeJS18dX,
+    runtime: aws.lambda.Runtime.NodeJS22dX,
     environment: {
       variables: lambdaEnv,
     },
