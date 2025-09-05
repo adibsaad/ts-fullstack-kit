@@ -1,6 +1,6 @@
 import Fastify, { FastifyBaseLogger } from 'fastify'
+import { randomUUID } from 'node:crypto'
 import { Server, IncomingMessage, ServerResponse } from 'node:http'
-import { v4 as uuid } from 'uuid'
 
 import { isProd } from '@common/env'
 
@@ -31,7 +31,7 @@ export async function genFastifyApp() {
           },
         },
     genReqId() {
-      return uuid()
+      return randomUUID()
     },
   })
 

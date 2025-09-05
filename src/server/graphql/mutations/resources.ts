@@ -1,4 +1,4 @@
-import { v4 as uuid } from 'uuid'
+import { randomUUID } from 'node:crypto'
 
 import type { Builder } from '../builder'
 import { ResourceRef } from '../objects/resources'
@@ -29,7 +29,7 @@ export function resourcesMut(builder: Builder) {
           .map(resource => {
             if (resource.new) {
               return {
-                id: uuid(),
+                id: randomUUID(),
                 field: resource.field,
               }
             }

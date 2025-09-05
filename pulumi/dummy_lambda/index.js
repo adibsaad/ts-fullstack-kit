@@ -1,5 +1,4 @@
-/* eslint-env node */
-// eslint-disable-next-line @typescript-eslint/require-await
+/* global exports */
 exports.handler = async function (_event, _context) {
   return {
     statusCode: 200,

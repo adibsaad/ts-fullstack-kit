@@ -41,7 +41,7 @@ export function subscriptionMutations(builder: Builder) {
               effectiveFrom: 'next_billing_period',
             },
           )
-        } catch (error) {
+        } catch {
           throw new GraphqlError('Failed to cancel subscription')
         }
 

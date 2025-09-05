@@ -1,6 +1,6 @@
-import commonServerConfig from './webpack_backend.config'
+import path from 'path'
 
-import path = require('path')
+import commonServerConfig from './webpack_backend.config'
 
 export default function configGen({ isProduction = false } = {}) {
   const options = commonServerConfig({ isProduction })

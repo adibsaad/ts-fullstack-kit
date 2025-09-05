@@ -1,4 +1,4 @@
-/* eslint-env node */
+/* global module, require, process */
 /** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
   transform: {
@@ -11,7 +11,6 @@ module.exports = {
   moduleNameMapper: {
     '^@common/(.*)': '<rootDir>/../common/$1',
     '^@server/(.*)': '<rootDir>/../server/$1',
-    '^uuid$': require.resolve('uuid'),
     '^lodash-es$': 'lodash',
   },
   setupFilesAfterEnv: ['<rootDir>/tests/setupTests.ts'],

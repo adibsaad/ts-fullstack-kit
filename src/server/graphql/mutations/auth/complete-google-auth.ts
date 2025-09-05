@@ -27,7 +27,7 @@ export function completeGoogleAuth(builder: Builder) {
         let tokenResponse: GetTokenResponse
         try {
           tokenResponse = await oAuth2Client.getToken(code)
-        } catch (error) {
+        } catch {
           return {
             token: '',
             error: 'Invalid user detected. Please try again',
@@ -45,7 +45,7 @@ export function completeGoogleAuth(builder: Builder) {
             idToken: tokens.id_token,
             audience: GOOGLE_CLIENT_ID,
           })
-        } catch (error) {
+        } catch {
           throw new GraphqlError('Invalid user detected. Please try again')
         }
 

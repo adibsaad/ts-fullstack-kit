@@ -23,11 +23,12 @@ export function paddleWebhook(app: FastifyInstance) {
       return reply.status(400).send()
     }
 
-    const valid = paddle.webhooks.isSignatureValid(
+    const valid = await paddle.webhooks.isSignatureValid(
       rawRequestBody,
       PADDLE_WEBHOOK_SECRET,
       signature,
     )
+
     if (!valid) {
       return reply.status(400).send()
     }

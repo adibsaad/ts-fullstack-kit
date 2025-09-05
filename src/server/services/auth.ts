@@ -1,4 +1,4 @@
-import { v4 } from 'uuid'
+import { randomUUID } from 'node:crypto'
 
 import { FRONTEND_URL } from '@server/config/env'
 import { MagicLinkEmail } from '@server/email/user/magic-link'
@@ -12,7 +12,7 @@ const EXPIRY = 1000 * 60 * 60 * 24
 export class AuthService {
   // TODO: add some kind of rate limiting to prevent abuse
   static async sendMagicLink(email: string) {
-    const token = v4()
+    const token = randomUUID()
     await prisma.magicLink.create({
       data: {
         email,
