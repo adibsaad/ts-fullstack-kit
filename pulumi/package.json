@@ -2,7 +2,7 @@
   "name": "ts-fullstack-kit",
   "main": "index.ts",
   "devDependencies": {
-    "@types/node": "^18.19.111",
+    "@types/node": "^22.18.1",
     "typescript": "^5.8.3"
   },
   "dependencies": {
